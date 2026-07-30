@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+  <link rel="stylesheet" href="style.css"/>
+
+<script src="script.js"></script>
+</head>
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Krushi Bazar — Maharashtra's Farmers Market</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="script.js"></script>
+</head>
+<body>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- WEATHER BAR -->
+<div id="weather-bar">
+  <span>🌤️ Dhule, MH — 34°C Partly Cloudy</span>
+  <span>💧 Humidity: 58%</span>
+  <span>🌬️ Wind: 12 km/h</span>
+  <span>🌧️ Rain expected: Tomorrow</span>
+</div>
+
+<!-- NAV -->
+<nav id="main-nav">
+  <div id="nav-logo">
+    <span style="font-size:22px">🌾</span>
+    <span class="logo-text">Krushi Bazar</span>
+  </div>
+  <div id="nav-links">
+    <button class="nav-btn active" data-page="home">🏠 Home</button>
+    <button class="nav-btn" data-page="prices">📊 Prices</button>
+    <button class="nav-btn" data-page="products">🛒 Shop</button>
+    <button class="nav-btn" data-page="farmers">👨‍🌾 Farmers</button>
+    <button class="nav-btn" data-page="sell">📦 Sell</button>
+    <button class="nav-btn" data-page="guide">📖 Crop Guide</button>
+  </div>
+  <div style="display:flex;align-items:center;gap:8px">
+    <div id="auth-area">
+      <!-- Filled by JS: login button OR user avatar -->
+    </div>
+    <button id="cart-btn">
+      🛒 Cart <span id="cart-count">0</span>
+    </button>
+  </div>
+</nav>
+<!-- ======================== HOME ======================== -->
+<div id="page-home" class="page active">
+  <div class="home-hero">
+    <div class="badge">🌱 Maharashtra's Farmers Market</div>
+    <h1>Fresh Produce,<br/><span>Direct from Farms</span></h1>
+    <p>Connect with 240+ local farmers in Dhule &amp; Maharashtra. Fresh fruits, vegetables, grains at fair prices — no middlemen.</p>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="navTo('products')">🛒 Shop Now</button>
+      <button class="btn-outline" onclick="navTo('farmers')">👨‍🌾 Meet Farmers</button>
+      <button class="btn-outline" onclick="navTo('guide')">📖 Crop Guide</button>
+    </div>
+    <div class="hero-stats">
+      <div><div class="hero-stat-num">240+</div><div class="hero-stat-lbl">Registered Farmers</div></div>
+      <div><div class="hero-stat-num">80+</div><div class="hero-stat-lbl">Crops Available</div></div>
+      <div><div class="hero-stat-num">5000+</div><div class="hero-stat-lbl">Happy Buyers</div></div>
+      <div><div class="hero-stat-num">12</div><div class="hero-stat-lbl">Districts Covered</div></div>
+    </div>
+  </div>
+
+  <section class="search-section">
+    <div class="overlay">
+        <h2>Find Fresh Products Direct From Farmers</h2>
+<div class="search-box">
+
+<input id="searchInput" type="text" placeholder="Search crops, vegetables, fruits...">
+<button id="searchBtn">Search</button>
+</div>
+</section>
+
+  <div class="categories-section">
+    <div class="section-title-center">
+      <div class="badge">🗂️ Browse</div>
+      <h2>Shop by Category</h2>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card" data-cat="Vegetables" style="background:#D8F3DC">
+        <div class="cat-icon">🥦</div>
+        <div class="cat-name" style="color:#2D6A4F">Vegetables</div>
+        <div class="cat-sub">Fresh sabji</div>
+      </div>
+      <div class="cat-card" data-cat="Fruits" style="background:#FFF3E0">
+        <div class="cat-icon">🍎</div>
+        <div class="cat-name" style="color:#e65100">Fruits</div>
+        <div class="cat-sub">Seasonal fale</div>
+      </div>
+      <div class="cat-card" data-cat="Grains" style="background:#FFF8E1">
+        <div class="cat-icon">🌾</div>
+        <div class="cat-name" style="color:#8B6914">Grains</div>
+        <div class="cat-sub">Dhaanya</div>
+      </div>
+      <div class="cat-card" data-cat="Pulses" style="background:#F3E5F5">
+        <div class="cat-icon">🫘</div>
+        <div class="cat-name" style="color:#6a1b9a">Pulses</div>
+        <div class="cat-sub">Dal &amp; Beans</div>
+      </div>
+      <div class="cat-card" data-cat="Spices" style="background:#FBE9E7">
+        <div class="cat-icon">🌶️</div>
+        <div class="cat-name" style="color:#bf360c">Spices</div>
+        <div class="cat-sub">Masale</div>
+      </div>
+      <div class="cat-card" data-cat="Crop Guide" style="background:#E8F5E9">
+        <div class="cat-icon">📖</div>
+        <div class="cat-name" style="color:#2D6A4F">Crop Guide</div>
+        <div class="cat-sub">Sheti margdarshan</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== PRICES ======================== -->
+<div id="page-prices" class="page">
+  <div class="page-wrap">
+    <div class="page-header">
+      <div class="badge">📊 Live Market</div>
+      <h2>Today's Mandi Prices</h2>
+      <p>Dhule APMC Mandi — Updated daily</p>
+    </div>
+    <div id="price-tabs" class="tab-row"></div>
+    <div class="price-board">
+      <div class="price-board-header">
+        <span class="title">🏪 Dhule Krushi Bazar — Price Board</span>
+        <span class="live-label"><span class="live-dot"></span><span id="live-time"></span></span>
+      </div>
+      <div class="price-table-wrap">
+        <table class="price-table">
+          <thead>
+            <tr>
+              <th>Commodity</th>
+              <th>Category</th>
+              <th>Min (₹)</th>
+              <th>Max (₹)</th>
+              <th>Modal (₹)</th>
+              <th>Change</th>
+            </tr>
+          </thead>
+          <tbody id="price-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== SHOP ======================== -->
+<div id="page-products" class="page">
+  <div class="page-wrap">
+    <div class="page-header">
+      <div class="badge">🛍️ Fresh Produce</div>
+      <h2>Available Products</h2>
+    </div>
+    <div class="search-input-wrap">
+      <input id="product-search" type="text" placeholder="Search products…"/>
+      <span>🔍</span>
+    </div>
+    <div id="product-tabs" class="tab-row"></div>
+    <div id="product-grid" class="product-grid"></div>
+  </div>
+</div>
+
+<!-- ======================== FARMERS ======================== -->
+<div id="page-farmers" class="page">
+  <div class="page-wrap">
+    <div class="page-header">
+      <div class="badge">👨‍🌾 Our Farmers</div>
+      <h2>Meet the Farmers</h2>
+      <p>Buy directly and support real farming families in Dhule district</p>
+    </div>
+    <div class="search-input-wrap" style="max-width:380px">
+      <input id="farmer-search" type="text" placeholder="Search by name, location, crop…"/>
+      <span>🔍</span>
+    </div>
+    <div id="farmer-grid" class="farmer-grid"></div>
+  </div>
+</div>
+
+<!-- ======================== SELL ======================== -->
+<div id="page-sell" class="page">
+  <div class="page-wrap" style="max-width:700px">
+    <div class="page-header">
+      <div class="badge">📦 Sell Your Crop</div>
+      <h2>List Your Produce</h2>
+      <p>Reach thousands of buyers directly — no middlemen</p>
+    </div>
+    <div class="sell-features">
+      <div class="sell-feature"><div class="icon">💰</div><div class="title">Better Prices</div><div class="desc">Get fair market price directly from buyers</div></div>
+      <div class="sell-feature"><div class="icon">📱</div><div class="title">Easy Listing</div><div class="desc">List your crop in under 2 minutes</div></div>
+      <div class="sell-feature"><div class="icon">🚜</div><div class="title">Free Registration</div><div class="desc">No joining fee, no hidden charges</div></div>
+      <div class="sell-feature"><div class="icon">📦</div><div class="title">Pickup Support</div><div class="desc">We arrange pickup from your farm</div></div>
+    </div>
+    <div class="sell-form-wrap">
+      <h3>🌱 Register / List Your Crop</h3>
+      <div class="form-group">
+        <label>Your Name (शेतकरी नाव)</label>
+        <input id="sell-name" type="text" placeholder="e.g. Raju Patil"/>
+      </div>
+      <div class="form-group">
+        <label>Mobile Number</label>
+        <input id="sell-phone" type="tel" placeholder="+91 98765 XXXXX"/>
+      </div>
+      <div class="form-group">
+        <label>Village / Taluka</label>
+        <input id="sell-location" type="text" placeholder="e.g. Shirpur, Dhule"/>
+      </div>
+      <div class="form-group">
+        <label>Quantity (प्रमाण)</label>
+        <input id="sell-qty" type="text" placeholder="e.g. 5 quintal, 100 kg"/>
+      </div>
+      <div class="form-group">
+        <label>Your Price (₹)</label>
+        <input id="sell-price" type="text" placeholder="e.g. ₹1500 per quintal"/>
+      </div>
+      <div class="form-group">
+        <label>Crop Name (पीक)</label>
+        <select id="sell-crop">
+          <option>Onion (Kanda)</option>
+          <option>Tomato</option>
+          <option>Wheat (Gehun)</option>
+          <option>Soybean</option>
+          <option>Cotton (Kapus)</option>
+          <option>Grapes</option>
+          <option>Pomegranate</option>
+          <option>Maize (Makka)</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Description (माहिती)</label>
+        <textarea id="sell-desc" placeholder="Quality details, organic/non-organic, storage available…"></textarea>
+      </div>
+      <button id="sell-submit" class="btn-submit">📤 Submit Listing via WhatsApp</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== CROP GUIDE ======================== -->
+<div id="page-guide" class="page">
+  <div class="guide-hero">
+    <div class="badge">📖 Maharashtra Farmer's Encyclopedia</div>
+    <h1>How to Grow <span>Any Crop</span></h1>
+    <p>Water needs, soil, fertilizer, disease control and profit estimates for every major Maharashtra crop.</p>
+  </div>
+  <div class="guide-filter-bar">
+    <div class="search-input-wrap" style="max-width:420px;margin-bottom:14px;background:#f4f7f4;border-color:#ddd">
+      <input id="crop-search" type="text" placeholder="Search crops… Onion, Wheat, Rose…" style="background:transparent"/>
+      <span>🔍</span>
+    </div>
+    <div id="crop-guide-tabs" class="tab-row"></div>
+  </div>
+  <div id="crop-grid" class="crop-grid"></div>
+</div>
+
+<!-- ======================== CROP DETAIL ======================== -->
+<div id="crop-detail"></div>
+
+<!-- ======================== CART MODAL ======================== -->
+<div id="cart-modal" class="modal-overlay">
+  <div class="modal-sheet">
+    <div class="modal-header">
+      <span class="modal-title">🛒 Your Cart</span>
+      <button class="modal-close" onclick="closeCart()">✕</button>
+    </div>
+    <div id="cart-body" class="modal-body"></div>
+    <div id="cart-footer" class="modal-footer" style="display:none">
+      <div class="cart-total-row">
+        <span>Total</span>
+        <span id="cart-total">₹0</span>
+      </div>
+      <button class="btn-checkout" onclick="checkout()">✅ Place Order (WhatsApp)</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== FARMER MODAL ======================== -->
+<div id="farmer-modal" class="modal-overlay">
+  <div class="modal-sheet" id="farmer-modal-content"></div>
+</div>
+
+<!-- ======================== FOOTER ======================== -->
+<footer id="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">🌾 Krushi Bazar</div>
+      <p class="footer-brand-text">Maharashtra's trusted online farmers market. Connecting farmers directly with buyers — no middlemen, fair prices, fresh produce.</p>
+    </div>
+    <div>
+      <div class="footer-col-title">Quick Links</div>
+      <div class="footer-link" onclick="navTo('prices')">Today's Prices</div>
+      <div class="footer-link" onclick="navTo('products')">All Products</div>
+      <div class="footer-link" onclick="navTo('farmers')">Our Farmers</div>
+      <div class="footer-link" onclick="navTo('sell')">Sell Your Crop</div>
+      <div class="footer-link" onclick="navTo('guide')">Crop Guide</div>
+    </div>
+    <div>
+      <div class="footer-col-title">Contact</div>
+      <div class="footer-contact">📞 +91 9130442913</div>
+      <div class="footer-contact">✉️ info@krushubazar.in</div>
+      <div class="footer-contact">📍 Dhule, Maharashtra</div>
+      <div class="footer-contact">⏰ Mon–Sat, 6am–8pm</div>
+    </div>
+  </div>
+  <div class="footer-copy">© 2026 Krushi Bazar · Made with ❤️ for Maharashtra's farmers</div>
+</footer>
+
+<!-- ======================== FARMER DASHBOARD ======================== -->
+<div id="page-dashboard" class="page">
+  <div class="page-wrap" style="max-width:900px">
+    <div id="dashboard-content"></div>
+  </div>
+</div>
+
+<!-- ======================== LOGIN MODAL ======================== -->
+<div id="login-modal" class="modal-overlay">
+  <div class="auth-sheet">
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="tab-login" onclick="switchAuthTab('login')">🔑 Login</button>
+      <button class="auth-tab" id="tab-register" onclick="switchAuthTab('register')">🌱 Register</button>
+    </div>
+    <button class="modal-close auth-modal-close" onclick="closeLoginModal()">✕</button>
+
+    <!-- LOGIN FORM -->
+    <div id="auth-login-form">
+      <div class="auth-header">
+        <div style="font-size:44px;margin-bottom:10px">👨‍🌾</div>
+        <h3>Welcome Back, Farmer!</h3>
+        <p>Login to manage your listings &amp; profile</p>
+      </div>
+      <div class="form-group">
+        <label>Mobile Number</label>
+        <input id="login-phone" type="tel" placeholder="+91 98765 XXXXX"/>
+      </div>
+      <div class="form-group">
+        <label>Password</label>
+        <div class="pw-wrap">
+          <input id="login-password" type="password" placeholder="Enter your password"/>
+          <button class="pw-toggle" onclick="togglePw('login-password', this)">👁️</button>
+        </div>
+      </div>
+      <div style="text-align:right;margin-bottom:16px">
+        <span class="link-text" onclick="showForgotMsg()">Forgot password?</span>
+      </div>
+      <button class="btn-submit" onclick="doLogin()">🔑 Login</button>
+      <div class="auth-divider"><span>or</span></div>
+      <button class="btn-wa-auth" onclick="loginViaWA()">💬 Login via WhatsApp OTP</button>
+      <div class="auth-switch">New farmer? <span class="link-text" onclick="switchAuthTab('register')">Register here</span></div>
+    </div>
+
+    <!-- REGISTER FORM -->
+    <div id="auth-register-form" style="display:none">
+      <div class="auth-header">
+        <div style="font-size:44px;margin-bottom:10px">🌱</div>
+        <h3>Join Krushi Bazar</h3>
+        <p>Create your free farmer account today</p>
+      </div>
+      <div class="form-group">
+        <label>Full Name (पूर्ण नाव) *</label>
+        <input id="reg-name" type="text" placeholder="e.g. Raju Ramesh Patil"/>
+      </div>
+      <div class="form-group">
+        <label>Mobile Number *</label>
+        <input id="reg-phone" type="tel" placeholder="+91 98765 XXXXX"/>
+      </div>
+      <div class="form-group">
+        <label>Village / Taluka *</label>
+        <input id="reg-location" type="text" placeholder="e.g. Shirpur, Dhule"/>
+      </div>
+      <div class="form-group">
+        <label>District</label>
+        <select id="reg-district">
+          <option>Dhule</option><option>Nandurbar</option><option>Nashik</option>
+          <option>Jalgaon</option><option>Pune</option><option>Kolhapur</option>
+          <option>Satara</option><option>Ahmednagar</option><option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Farm Size (Acres)</label>
+        <input id="reg-acres" type="number" placeholder="e.g. 5"/>
+      </div>
+      <div class="form-group">
+        <label>Main Crops</label>
+        <input id="reg-crops" type="text" placeholder="e.g. Onion, Wheat, Tomato"/>
+      </div>
+      <div class="form-group">
+        <label>Password *</label>
+        <div class="pw-wrap">
+          <input id="reg-password" type="password" placeholder="Create a strong password"/>
+          <button class="pw-toggle" onclick="togglePw('reg-password', this)">👁️</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Confirm Password *</label>
+        <div class="pw-wrap">
+          <input id="reg-confirm" type="password" placeholder="Re-enter password"/>
+          <button class="pw-toggle" onclick="togglePw('reg-confirm', this)">👁️</button>
+        </div>
+      </div>
+      <button class="btn-submit" onclick="doRegister()">🌱 Create Farmer Account</button>
+      <div class="auth-switch">Already registered? <span class="link-text" onclick="switchAuthTab('login')">Login here</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================== USER DROPDOWN ======================== -->
+<div id="user-dropdown" class="user-dropdown" style="display:none">
+  <div class="user-dropdown-name" id="dropdown-name"></div>
+  <div class="user-dropdown-loc"  id="dropdown-loc"></div>
+  <hr style="border:none;border-top:1px solid #f0f0f0;margin:10px 0"/>
+  <div class="dropdown-item" onclick="navTo('dashboard');closeDropdown()">📊 My Dashboard</div>
+  <div class="dropdown-item" onclick="navTo('sell');closeDropdown()">📦 List a Crop</div>
+  <div class="dropdown-item" onclick="navTo('guide');closeDropdown()">📖 Crop Guide</div>
+  <hr style="border:none;border-top:1px solid #f0f0f0;margin:10px 0"/>
+  <div class="dropdown-item logout" onclick="doLogout()">🚪 Logout</div>
+</div>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
