@@ -25,6 +25,7 @@ Krushi Bazzar is a web-based platform developed to connect farmers directly with
 - Mongoose
 
 ## 📂 Project Structure
+
 -README.md
 -app.js
 -data.js
