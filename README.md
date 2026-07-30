@@ -16,10 +16,6 @@ Krushi Bazzar is a web-based platform developed to connect farmers directly with
 
 ## 🛠️ Technologies Used
 
-Technologies Used
-
-## 🛠️ Technologies Used
-
 - HTML5
 - CSS3
 - JavaScript (ES6)
