@@ -18,27 +18,34 @@ Krushi Bazzar is a web-based platform developed to connect farmers directly with
 
 Technologies Used
 
-• HTML5
-• CSS3
-• JavaScript
-• Node.js
-• Express.js (if used in app.js)
-• JSON (data.js)
-• Responsive Web Design
-• Git
-• GitHub
+## 🛠️ Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript (ES6)
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- Git
+- GitHub
+- Responsive Web Design
+- Visual Studio Code (VS Code)
 
 ## 📂 Project Structure
 
--README.md
--app.js
--data.js
--farmer.png
--index.html
--new.jpeg
--onion.jpg
--script.js
--style.css
+```text
+Krushi-Bazzar/
+│── README.md
+│── app.js
+│── data.js
+│── farmer.png
+│── index.html
+│── new.jpeg
+│── onion.jpg
+│── script.js
+└── style.css
+```
 
 ## 🚀 Installation
 
