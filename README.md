@@ -25,26 +25,22 @@ Krushi Bazzar is a web-based platform developed to connect farmers directly with
 - Mongoose
 
 ## 📂 Project Structure
-
-```
-Krushi-Bazzar/
-│── public/
-│── views/
-│── models/
-│── routes/
-│── controllers/
-│── images/
-│── app.js
-│── package.json
-│── README.md
-```
+-README.md
+-app.js
+-data.js
+-farmer.png
+-index.html
+-new.jpeg
+-onion.jpg
+-script.js
+-style.css
 
 ## 🚀 Installation
 
 1. Clone the repository
 
 ```bash
-git clone https://github.com/your-username/Krushi-Bazzar.git
+git clone https://github.com/yatharth2913/Krushi-Bazzar.git
 ```
 
 2. Open the project folder
